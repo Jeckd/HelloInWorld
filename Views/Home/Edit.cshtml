@@ -1,0 +1,27 @@
+@model HelloInWorld.Core.IItemRepository
+
+@{
+    ViewData["Title"] = "Edit Item";
+    var repository = @Model;
+    int id = ViewBag.id;
+
+    var item = repository.GetItems(id).FirstOrDefault((item)=>item.id==id);
+}
+
+
+<h1>Edit item</h1>
+
+
+<div width="100%">
+    <form action=@Url.Action("Modify")>
+        <input name="id" type="hidden" value=@item.id>
+        <p>Header</p>
+        <input name="header" value=@item.Header>
+        <p>Text</p>
+        <textarea name="content">
+            @item.Content
+        </textarea>
+        <input type="submit" value="Save">
+    </form>
+</div>
+

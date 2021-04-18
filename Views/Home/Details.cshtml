@@ -1,0 +1,16 @@
+
+@{
+    ViewData["Title"] = $"{ViewBag.Header}";
+}
+
+<div name="post">
+<h1 name="header">@ViewBag</h1>
+
+@ViewBag.Content
+
+</div>
+<div class="menu">
+    <a href=@Url.Action("Edit", new {id = ViewBag.id})>Edit</a>
+    <a href=@Url.Action("Remove", new {id = ViewBag.id})>Remove</a>
+</div>
+

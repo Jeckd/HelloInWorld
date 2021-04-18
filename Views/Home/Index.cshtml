@@ -1,0 +1,28 @@
+﻿@model HelloInWorld.Core.IItemRepository
+
+@{
+    ViewData["Title"] = "Home Page";
+    var repository = @Model;
+}
+
+<div class="menu">
+    <a href=@Url.Action("Create")>Create</a>
+</div>
+
+@{
+    var items = repository.GetItems();
+    foreach ( var item in items)
+    {
+        <div class="text-left">
+            <div class="item">
+            <h1 class="display-4"><a href=@Url.Action("Details", new{id = item.id})>@item.Header</a></h1>
+            <p>@item.Content</p>
+            </div>
+            <div class="menu">
+                <a href=@Url.Action("Edit", new {id = item.id})>Edit</a>
+                <a href=@Url.Action("Remove", new {id = item.id})>Remove</a>
+            </div>
+        </div>
+    }
+
+}
